@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org" layout:decorate="~{/layout/wikiLayout}">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no, address=no, email=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/><link rel="stylesheet" href="./static/css/common.css"/>
+    <link rel="stylesheet" href="./static/css/wiki.css"/>
+<style>.local-demo-label{position:fixed;bottom:8px;left:50%;transform:translateX(-50%);z-index:2000;background:#111;color:white;padding:7px 12px;border-radius:20px;font:12px/1.4 sans-serif;white-space:nowrap;opacity:.85;pointer-events:none}</style>
+    <title>사기 예방 백과사전</title>
+
+    <th:block layout:fragment="og_tags">
+        <!-- Open Graph: programList -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://bankit.kr/scam/wiki">
+        <meta property="og:title" content="사기 예방 백과사전 ㅣ 전국은행연합회">
+        <meta property="og:image" content="https://bankit.kr/static/images/og/wiki.png">
+        <meta property="og:description" content="다양한 사기 유형을 쉽고 재미있게 배우며 예방할 수 있도록 여러분을 지켜주는 백과사전과 NFC 보조배터리를 제작했어요.">
+    </th:block>
+</head>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="./static/js/common.js"></script>
+<script>
+// 포트폴리오 로컬 미리보기용 대체 함수: 실제 서버 API와는 연결되지 않습니다.
+function getDevice(){return 'mobile';}
+// 실제 API 응답이 아닌, 화면 시연을 위한 임시 예시 데이터입니다.
+const LOCAL_DEMO_DATA = {
+  keyword: '사랑',
+  phrase: '사랑에 속은 이야기',
+  groupId: 1,
+  word: '사칭 메시지',
+  buttonYn: 'Y',
+  contents: '이 페이지는 포트폴리오 로컬 시연용 예시 데이터입니다.\n\n낯선 사람이 보낸 메시지에 포함된 링크를 누르기 전에는 발신자와 내용을 확인해 보세요.\n\n금전이나 개인정보를 요구하는 경우에는 공식 연락처를 통해 사실 여부를 확인하는 것이 중요합니다.\n\n※ 실제 캠페인 운영 문구가 아닌 임시 설명입니다.',
+  definitionContents: '포트폴리오 시연용 설명입니다.\n실제 서버 API에서 제공되는 용어 설명은 포함되어 있지 않습니다.'
+};
+function l_ajax(method, type, url, params, callback){
+  if (url === '/scam/wiki/data') { callback(LOCAL_DEMO_DATA); return; }
+  console.warn('로컬 미리보기: 지원하지 않는 API', url);
+  callback(null);
+}
+</script>
+
+<body>
+<div class="local-demo-label" role="note">포트폴리오 로컬 시연 · API 데이터는 예시입니다</div>
+<div id="wrap">
+<div id="container">
+
+<div class="page_container">
+
+    <!------------------ 시작 페이지 ------------------>
+    <section class="start_page">
+        <div class="inner">
+            <div class="tit_wrap">
+                <div>
+                    <h1 class="tit">사기 예방 <br> 백과사전</h1>
+                    <p class="txt_start">오늘도</p>
+                </div>
+                <div>
+                    <p class="sentence" aria-live="off">
+                        <span class="slot_window" aria-hidden="true">
+                            <span class="slot_reel">
+                              <span class="slot_reel_inner"></span>
+                            </span>
+                        </span>
+                    </p>
+                    <!-- 스크린리더 전용 -->
+                    <div id="slot-announce" role="status" aria-live="polite" aria-atomic="true" class="blind"></div>
+                    <p class="txt_post">에</p>
+                </div>
+                <div>
+                    <p class="txt_end">속지말자</p>
+                    <div class="logo" role="img" aria-label="은행연합회"></div>
+                </div>
+            </div>
+
+            <div class="visuals" aria-hidden="true">
+                <figure class="bg"></figure>
+            </div>
+            <figure class="char1"><span aria-hidden="true"></span></figure>
+            <figure class="char2"></figure>
+
+            <div class="btn_wrap">
+                <button type="button" class="btn_cta" aria-describedby="cta-desc">오늘의 사기 예방법 보러가기 <i
+                        aria-hidden="true"></i></button>
+            </div>
+            <!-- 스크린리더 전용 -->
+            <span id="cta-desc" class="blind">버튼을 누르면 페이지가 전환됩니다.</span>
+        </div>
+    </section>
+    <!------------------ //시작 페이지 ------------------>
+
+
+    <!------------------ 본문 페이지 ------------------>
+    <div class="cont_page">
+
+        <!--  section1  -->
+        <section class="sec_01">
+            <figure class="sec_bg" aria-hidden="true"></figure>
+            <div class="inner">
+                <div class="sec_head">
+                    <h2>사기 예방 백과사전</h2>
+                    <div class="row2"><p class="today star">2999년 12월 31일</p><span aria-hidden="true"></span></div>
+                    <div class="row3"><p>사랑에 속은 이야기</p><span aria-hidden="true"></span></div>
+                    <figure role="img" aria-label="오늘의 주제 관련 일러스트"></figure>
+                </div>
+
+                <div class="word_trigger">
+                    <div class="row1"><p>오늘은</p><span aria-hidden="true"></span></div>
+                    <div class="row2">
+                        <div>
+                            <p class="topic">청소년 불법도박</p>
+                            <button type="button" class="btn_popup" data-popup="popupWord" aria-haspopup="dialog"
+                                    aria-controls="popupWord">
+                                <span class="blind">용어 설명 팝업 열기</span>
+                            </button>
+                        </div>
+                        <p>을</p>
+                    </div>
+                    <div class="row3"><p>예방해봐요</p><span aria-hidden="true"></span></div>
+                </div>
+
+                <div class="encyclopedia">
+                    <div class="paper_bg" aria-hidden="true">
+                        <div class="piece"></div>
+                        <div class="piece"></div>
+                        <div class="piece"></div>
+                        <div class="piece"></div>
+                    </div>
+
+                    <div class="swiper_container">
+                        <!-- 스와이프 영역 -->
+                        <div class="swiper" role="region" aria-label="오늘의 백과사전 슬라이드" aria-roledescription="carousel">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <p>
+                                        <!-- encyclopediaText -->
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //스와이프 영역 -->
+                        <div class="swiper_control">
+                            <button type="button" class="swiper-button-prev" aria-label="이전 슬라이드"></button>
+                            <button type="button" class="swiper-button-next" aria-label="다음 슬라이드"></button>
+                        </div>
+                    </div>
+
+                    <div class="info">
+                        <p class="top star">백과사전의 내용은 <br> 매일 새로워집니다!</p>
+                        <p class="btm">
+                            내일도 사기 예방 백과사전 NFC를<br>
+                            태그하고, 안전한 금융 생활에<br>
+                            한 걸음 더 가까워지세요.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--  section2  -->
+        <section class="sec_02" role="region" aria-label="긴급 상담 핫라인">
+            <div class="inner">
+                <div class="hotline_wrap">
+                    <div class="hotline_guide">
+                        <p>
+                            사기가 의심되거나 <br>
+                            피해를 받으셨다면 <br>
+                            지금 바로 전화하고 상담받으세요!
+                        </p>
+                        <figure aria-hidden="true"></figure>
+                    </div>
+
+                    <ul class="hotline_list">
+                        <li class="hotline_item">
+                            <figure aria-hidden="true" role="presentation"></figure>
+                            <div>
+                                <div class="hotline_txt">
+                                    <p class="hotline_org">경찰청</p>
+                                    <p class="hotline_num">112</p>
+                                </div>
+                                <a href="tel:112" class="btn_call" aria-label="경찰청 112로 전화 걸기"></a>
+                            </div>
+                        </li>
+                        <!--                        <li class="hotline_item">-->
+                        <!--                            <figure aria-hidden="true" role="presentation"></figure>-->
+                        <!--                            <div>-->
+                        <!--                                <div class="hotline_txt">-->
+                        <!--                                    <p class="hotline_org">금융감독원</p>-->
+                        <!--                                    <p class="hotline_num">1332</p>-->
+                        <!--                                </div>-->
+                        <!--                                <a href="tel:1332" class="btn_call" aria-label="금융감독원 1332로 전화 걸기"></a>-->
+                        <!--                            </div>-->
+                        <!--                        </li>-->
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="sec_wrap">
+            <figure class="sec_bg" aria-hidden="true"></figure>
+
+            <!--  section3  -->
+            <section class="sec_03" role="region" aria-label="전자책 더 보기">
+                <div class="inner">
+                    <h3 class="star">더 많은 내용을 <br> 보고 싶으신가요?</h3>
+
+                    <div class="marquee_wrap" tabindex="0" aria-label="전자책 미리보기 가로 갤러리" aria-roledescription="수평 갤러리"
+                         aria-live="off">
+                        <ul class="marquee_track" role="group" aria-label="전자책 목록 1행">
+                            <li class="marquee_img"><img src="./static/images/wiki/slide_img1.png" alt="전자책 내용 이미지"></li>
+                            <li class="marquee_img"><img src="./static/images/wiki/slide_img2.png" alt="전자책 내용 이미지"></li>
+                            <li class="marquee_img"><img src="./static/images/wiki/slide_img3.png" alt="전자책 내용 이미지"></li>
+                            <li class="marquee_img"><img src="./static/images/wiki/slide_img4.png" alt="전자책 내용 이미지"></li>
+                        </ul>
+                        <ul class="marquee_track" role="group" aria-label="전자책 목록 2행">
+                            <li class="marquee_img"><img src="./static/images/wiki/slide_img5.png" alt="전자책 내용 이미지"></li>
+                            <li class="marquee_img"><img src="./static/images/wiki/slide_img6.png" alt="전자책 내용 이미지"></li>
+                            <li class="marquee_img"><img src="./static/images/wiki/slide_img7.png" alt="전자책 내용 이미지"></li>
+                            <li class="marquee_img"><img src="./static/images/wiki/slide_img8.png" alt="전자책 내용 이미지"></li>
+                        </ul>
+                    </div>
+
+                    <div class="ebook_guide" aria-labelledby="ebook-guide-title">
+                        <h3 id="ebook-guide-title" class="blind">전자책 안내</h3>
+
+                        <div class="guide_txt">
+                            <p>
+                                <span class="logo" role="img" aria-label="은행연합회"></span>는 <br>
+                                <span class="hl">다양한 사기 유형을 쉽고 재미있게 배우며</span><br>
+                                <span class="hl">예방</span> 할 수 있도록 여러분을 지켜주는<br>
+                                백과사전과 NFC 보조배터리를 제작했어요.
+                            </p>
+                            <p>
+                                아래 버튼을 클릭하고 <br>
+                                <span class="hl">사기 예방 백과사전</span>을 받아보세요!
+                            </p>
+                        </div>
+
+                        <div class="btn_wrap">
+                            <a class="btn_dwl btn_download"
+                               href="/file/filedown/20ade68c-07ab-41a5-b517-dd84054d5d2c.pdf"
+                               download="사기 예방 백과사전.pdf"
+                               aria-describedby="dl-info">
+                                백과사전 다운로드하기 <i aria-hidden="true"></i>
+                            </a>
+                        </div>
+
+                        <p id="dl-info" class="info">
+                            출처 표시 시 자유롭게 이용할 수 있지만, 상업적으로는 이용할 수 없습니다. <br>
+                            또한, 저작물을 변경하거나 저작물을 이용하여 <br>
+                            새롭게 제작하는 것(2차적 저작물)을 금지합니다.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!--  section4  -->
+            <section class="sec_04" role="region" aria-label="이벤트 소개">
+                <div class="inner">
+                    <div class="event_wrap">
+                        <div class="event_inner">
+                            <div class="tit_wrap">
+                                <h3 class="star">안전한 금융생활에 한 걸음 더 가까워지셨나요?</h3>
+                                <p>
+                                    <span class="hl_yellow">NFC 보조배터리 리뷰</span>하고<br>
+                                    <span class="hl_blue">스타벅스 쿠폰</span> 받아가세요!
+                                </p>
+                            </div>
+
+                            <div class="prize">
+                                <figure><img src="./static/images/wiki/event.png" alt="경품 : 스타벅스 쿠폰"></figure>
+                            </div>
+
+                            <ul class="event_list">
+                                <li>
+                                    <h4>참여방법</h4>
+                                    <ol class="steps">
+                                        <li>
+                                            <div class="step_item">
+                                                <i aria-hidden="true">1</i>
+                                                <p>
+                                                    NFC 보조배터리를 사용하고 <b>인스타그램</b> 또는 <br>
+                                                    <b>네이버 블로그</b>에 리뷰 게시물을 업로드해주세요.
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="step_item">
+                                                <i aria-hidden="true">2</i>
+                                                <p>
+                                                    하단의 ‘이벤트 신청하기’ 버튼을 눌러 <br>
+                                                    <b>뱅크잇 신청 페이지로 이동</b>해주세요.
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="step_item">
+                                                <i aria-hidden="true">3</i>
+                                                <p>
+                                                    업로드한 리뷰 게시물의 <b>링크를 입력하여</b> <br>
+                                                    <b>신청을 완료</b>해주세요.
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li>
+                                    <h4>필수 작성 내용</h4>
+                                    <p>
+                                        리뷰 게시물에 사기 예방 백과사전 <b>‘NFC 보조배터리’를</b>
+                                        <b>사용 중인 사진을 1장 이상 포함</b>해주세요.
+                                    </p>
+                                    <p class="tip">
+                                        * 리뷰를 정성스럽게 작성해주실수록 당첨 확률이 <br>
+                                        높아져요.
+                                    </p>
+                                </li>
+                                <li>
+                                    <h4>참여 기간</h4>
+                                    <p>보조배터리 수령일 ~ 2026년 1월 18일 (일)</p>
+                                    <p class="tip">* 기간 내 신청을 완료해야 인정됩니다.</p>
+                                </li>
+                                <li>
+                                    <h4>당첨 상품</h4>
+                                    <p><b>총 63명 랜덤 추첨</b></p>
+                                    <ul class="prize_list">
+                                        <li><p>스타벅스 e카드 3만원 교환권 <b>(3명)</b></p></li>
+                                        <li><p>스타벅스 e카드 1만원 교환권 <b>(10명)</b></p></li>
+                                        <li><p>스타벅스 카페 아메리카노 T <b>(50명)</b></p></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <h4>상품 지급일</h4>
+                                    <p>2026년 1월 23일 (금)</p>
+                                    <p class="tip">* 당첨자 개별 안내 및 지급 예정</p>
+                                </li>
+                                <li>
+                                    <div class="btn_wrap">
+                                        <a class="btn_apply" href="/program/storyView/2478">이벤트 신청하기</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h4>유의사항</h4>
+                                    <ul class="note_list">
+                                        <li>
+                                            본 이벤트는 은행연합회 사기 예방 NFC 보조배터리를
+                                            수령한 뱅크잇 회원에 한해 참여하실 수 있습니다.
+                                        </li>
+                                        <li>
+                                            사은품 발송을 위해 일부 개인정보가 대행업체에 제공되며,
+                                            해당 정보는 경품 발송 외의 용도로 사용하지 않습니다.
+                                        </li>
+                                        <li>
+                                            비정상적인 방법으로 참여할 경우 당첨이 취소될 수
+                                            있습니다.
+                                        </li>
+                                        <li>필수 내용을 작성해주셔야 선정대상자에 포함됩니다.</li>
+                                        <li>
+                                            의미 없는 단어 및 문장, 비속어 등이 포함된 후기는
+                                            선정 기준에 어긋나, 선정이 어렵습니다.
+                                        </li>
+                                        <li>
+                                            스팸 유료 서비스 가입, 해외에 체류하는 경우, 통신사의
+                                            통신망 오류 등으로 문자를 받지 못할 수 있습니다.
+                                        </li>
+                                        <li>
+                                            경품을 받지 못한 경우, 스팸문자함을 먼저 확인
+                                            부탁드립니다.
+                                        </li>
+                                        <li>
+                                            수령한 모바일 쿠폰에 문제가 있을 시, 아래의 고객센터로
+                                            문의 부탁드립니다. <br>
+                                            (기프티쇼비즈 고객센터: 1588-0108)
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--  section5  -->
+            <section class="sec_05" role="region" aria-label="뱅크잇 앱 다운로드 안내">
+                <div class="inner">
+                    <a href="https://bankit.kr/app" aria-label="뱅크잇 앱 다운로드로 이동">
+                        <div class="app_promo">
+                            <figure class="promo_img" aria-hidden="true"></figure>
+                            <div class="app_txt">
+                                <figure class="bankit_logo" aria-hidden="true"></figure>
+                                <p>금융을 배우고 <br> 포인트로 이벤트 참여까지!</p>
+                            </div>
+                        </div>
+                        <p class="cta">뱅크잇 앱 다운로드 <i aria-hidden="true"></i></p>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+    </div>
+    <!------------------ //본문 페이지 ------------------>
+
+</div>
+
+
+<div id="popup_all">
+
+    <!-- 용어 설명 팝업 -->
+    <div id="popupWord" class="popup pop_word" role="dialog" aria-modal="true" data-layout="popupE">
+        <div class="popup_inner">
+            <button type="button" class="btn_popup_close btn_x">
+                <span class="blind">닫기</span>
+            </button>
+            <div class="cont_wrap">
+                <h2 class="tit">로맨스 스캠</h2>
+                <div class="cont_txt">
+                    <p>
+                        로맨스 스캠은 피해자를 좋아하는 척하면서 돈을 빼앗는 사기입니다.
+                    </p>
+                    <p>
+                        로맨스 스캠의 로맨스(romance)는 ‘사랑’을, 스캠(scam)은 ‘사기’를 뜻합니다.
+                        ‘로맨스 피싱’이라고도 부르는데, 이때 피싱(phishing)은 ‘낚시’를 뜻하지요.
+                    </p>
+                    <p>
+                        사기범은 보통 외국인이나 해외에 사는 사람인 척 하면서 SNS나 데이팅 앱 등 온라인에서 먼저 말을 걸어옵니다.
+                    </p>
+                </div>
+            </div>
+            <div class="btn_wrap">
+                <button type="button" class="btn_popup_close close">닫기</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="./static/js/wiki.js"></script>
+
+</div>
+</div>
+</body>
+</html>
